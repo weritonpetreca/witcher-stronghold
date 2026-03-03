@@ -1,6 +1,7 @@
-HELP.md
+guardians-gate/HELP.md
 .gradle
 build/
+**/build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -35,3 +36,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
