@@ -12,7 +12,7 @@ import java.util.UUID;
  * This class implements the inbound use case and coordinates between
  * the pure domain model and the outbound persistence ports.
  */
-public class GuardianResgistrationService implements CreateGuardianUseCase {
+public class GuardianRegistrationService implements CreateGuardianUseCase {
 
     private final SaveGuardianPort saveGuardianPort;
 
@@ -23,7 +23,7 @@ public class GuardianResgistrationService implements CreateGuardianUseCase {
      *
      * @param saveGuardianPort The outbound port for Guardian persistence.
      */
-    public GuardianResgistrationService(SaveGuardianPort saveGuardianPort) {
+    public GuardianRegistrationService(SaveGuardianPort saveGuardianPort) {
         this.saveGuardianPort = saveGuardianPort;
     }
 
