@@ -2,7 +2,7 @@ package dev.weriton.stronghold.guardiansgate.application.service;
 
 import dev.weriton.stronghold.guardiansgate.application.port.in.CreateGuardianUseCase;
 import dev.weriton.stronghold.guardiansgate.application.port.out.SaveGuardianPort;
-import dev.weriton.stronghold.guardiansgate.domain.Guardian;
+import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
 
 import java.util.UUID;
 
@@ -12,6 +12,7 @@ import java.util.UUID;
  * This class implements the inbound use case and coordinates between
  * the pure domain model and the outbound persistence ports.
  */
+
 public class GuardianRegistrationService implements CreateGuardianUseCase {
 
     private final SaveGuardianPort saveGuardianPort;

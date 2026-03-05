@@ -3,8 +3,7 @@ package dev.weriton.stronghold.guardiansgate.infrastructure.adapter.in.web;
 
 import dev.weriton.stronghold.guardiansgate.application.port.in.CreateGuardianUseCase;
 import dev.weriton.stronghold.guardiansgate.application.port.in.CreateGuardianUseCase.CreateGuardianCommand;
-import dev.weriton.stronghold.guardiansgate.domain.Guardian;
-import dev.weriton.stronghold.guardiansgate.domain.GuardianRank;
+import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

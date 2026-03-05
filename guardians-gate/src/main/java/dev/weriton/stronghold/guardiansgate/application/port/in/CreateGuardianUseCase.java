@@ -1,7 +1,7 @@
 package dev.weriton.stronghold.guardiansgate.application.port.in;
 
-import dev.weriton.stronghold.guardiansgate.domain.Guardian;
-import dev.weriton.stronghold.guardiansgate.domain.GuardianRank;
+import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
+import dev.weriton.stronghold.guardiansgate.domain.model.GuardianRank;
 
 /**
  * Inbound port (Use Case) defining the contract for registering a new Guardian.

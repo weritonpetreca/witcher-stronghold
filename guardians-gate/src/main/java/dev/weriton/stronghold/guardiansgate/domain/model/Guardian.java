@@ -1,4 +1,4 @@
-package dev.weriton.stronghold.guardiansgate.domain;
+package dev.weriton.stronghold.guardiansgate.domain.model;
 
 import java.util.UUID;
 

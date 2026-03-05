@@ -1,6 +1,6 @@
 package dev.weriton.stronghold.guardiansgate.application.port.out;
 
-import dev.weriton.stronghold.guardiansgate.domain.Guardian;
+import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
 
 /**
  * Outbound port defining the contract for Guardian persistence.
