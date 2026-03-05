@@ -1,8 +1,8 @@
 package dev.weriton.stronghold.guardiansgate.infrastructure.adapter.in.web;
 
 import dev.weriton.stronghold.guardiansgate.application.port.in.CreateGuardianUseCase.CreateGuardianCommand;
-import dev.weriton.stronghold.guardiansgate.domain.Guardian;
-import dev.weriton.stronghold.guardiansgate.domain.GuardianRank;
+import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
+import dev.weriton.stronghold.guardiansgate.domain.model.GuardianRank;
 import dev.weriton.stronghold.guardiansgate.infrastructure.adapter.in.web.GuardianController.GuardianResponse;
 import dev.weriton.stronghold.guardiansgate.infrastructure.adapter.in.web.GuardianController.RegisterGuardianRequest;
 import org.springframework.stereotype.Component;

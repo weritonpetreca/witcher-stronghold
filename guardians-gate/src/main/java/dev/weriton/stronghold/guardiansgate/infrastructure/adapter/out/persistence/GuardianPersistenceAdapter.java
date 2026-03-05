@@ -1,8 +1,8 @@
 package dev.weriton.stronghold.guardiansgate.infrastructure.adapter.out.persistence;
 
 import dev.weriton.stronghold.guardiansgate.application.port.out.SaveGuardianPort;
-import dev.weriton.stronghold.guardiansgate.domain.Guardian;
-import dev.weriton.stronghold.guardiansgate.domain.GuardianRank;
+import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
+import dev.weriton.stronghold.guardiansgate.domain.model.GuardianRank;
 import dev.weriton.stronghold.guardiansgate.infrastructure.adapter.out.persistence.entity.GuardianJpaEntity;
 import dev.weriton.stronghold.guardiansgate.infrastructure.adapter.out.persistence.repository.GuardianRepository;
 import org.springframework.stereotype.Component;
