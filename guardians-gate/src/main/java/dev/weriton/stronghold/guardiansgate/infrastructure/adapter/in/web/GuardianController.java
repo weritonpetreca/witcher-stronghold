@@ -4,6 +4,9 @@ package dev.weriton.stronghold.guardiansgate.infrastructure.adapter.in.web;
 import dev.weriton.stronghold.guardiansgate.application.port.in.CreateGuardianUseCase;
 import dev.weriton.stronghold.guardiansgate.application.port.in.CreateGuardianUseCase.CreateGuardianCommand;
 import dev.weriton.stronghold.guardiansgate.domain.model.Guardian;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +32,7 @@ public class GuardianController {
     }
 
     @PostMapping
-    public ResponseEntity<GuardianResponse> registerGuardian(@RequestBody RegisterGuardianRequest request) {
+    public ResponseEntity<GuardianResponse> registerGuardian(@Valid @RequestBody RegisterGuardianRequest request) {
 
         CreateGuardianCommand command = mapper.toCommand(request);
         Guardian newGuardian = createGuardianUseCase.execute(command);
@@ -40,7 +43,17 @@ public class GuardianController {
 
     // --- Web DTOs (Records specific to this controller) ---
 
-    public record RegisterGuardianRequest(String name, String rank) {}
+    public record RegisterGuardianRequest(
+            @NotBlank(message = "The Guardian's name must not be blank")
+            @Pattern(regexp = "^[a-zA-Z0-9_-]+$",
+                    message = "The Guardian's name must only contain letters," +
+                            " numbers, underscores or hyphens.")
+            String name,
+
+            @NotBlank(message = "The Guardian's rank must be provided")
+            @Pattern(regexp = "^(NOVICE|ADEPT|EXPERT|MASTER|GRANDMASTER)$",
+                    message = "Invalid rank. Acceptable values are: NOVICE, ADEPT, EXPERT, MASTER, GRANDMASTER.")
+            String rank) {}
 
     public record GuardianResponse(String id, String name, String rank) {}
 }
