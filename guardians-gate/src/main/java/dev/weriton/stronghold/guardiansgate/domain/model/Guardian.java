@@ -1,5 +1,6 @@
 package dev.weriton.stronghold.guardiansgate.domain.model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -15,9 +16,15 @@ public class Guardian {
     private final GuardianRank rank;
 
     public Guardian(UUID id, String name, GuardianRank rank) {
-        this.id = id;
+
+        this.id = Objects.requireNonNull(id, "Guardian ID cannot be null.");
+
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Guardian Name cannot be null or blank");
+        }
         this.name = name;
-        this.rank = rank;
+
+        this.rank = Objects.requireNonNull(rank, "Guardian Rank cannot be null.");
     }
 
     public UUID getId() {

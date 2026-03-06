@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "4.0.3"
 	id("io.spring.dependency-management") version "1.1.7"
+    jacoco
 }
 
 group = "dev.weriton.stronghold"
@@ -37,6 +38,7 @@ dependencies {
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
 
+	testImplementation("com.tngtech.archunit:archunit-junit5:1.3.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-actuator-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
 	testImplementation("org.springframework.boot:spring-boot-starter-validation-test")
@@ -46,4 +48,26 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+	dependsOn(tasks.test)
+
+	reports {
+		xml.required.set(false)
+		csv.required.set(false)
+		html.required.set(true)
+	}
+
+	classDirectories.setFrom(
+		files(classDirectories.files.map {
+			fileTree(it) {
+				exclude(
+					"**/GuardiansGateApplication.class",
+					"**/infrastructure/**"
+				)
+			}
+		})
+	)
 }
