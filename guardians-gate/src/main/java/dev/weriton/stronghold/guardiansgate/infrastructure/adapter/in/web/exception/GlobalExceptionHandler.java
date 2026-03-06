@@ -1,5 +1,6 @@
 package dev.weriton.stronghold.guardiansgate.infrastructure.adapter.in.web.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
  * Global exception interceptor. Catches exceptions thrown by any controller
  * and maps them to secure, standardized HTTP responses.
  */
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -56,5 +58,24 @@ public class GlobalExceptionHandler {
         );
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    /**
+     * The ultimate safety net. Intercepts any unhandled RuntimeExceptions (e.g., Database down)
+     * and prevents stack trace leakage to the client.
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiErrorResponse> handleAllUncaughtExceptions(Exception ex) {
+
+        log.error("CRITICAL FAILURE: Intercepted unhandled exception in the gateway.", ex);
+
+        ApiErrorResponse response = new ApiErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "Internal Server Error",
+                List.of("An unexpected system failure occurred. Our mages have been notified.")
+        );
+
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 }
