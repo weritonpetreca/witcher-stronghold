@@ -19,7 +19,7 @@ public class Guardian {
 
         this.id = Objects.requireNonNull(id, "Guardian ID cannot be null.");
 
-        if (name == null || name.trim().isEmpty()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Guardian Name cannot be null or blank");
         }
         this.name = name;
