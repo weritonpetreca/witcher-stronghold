@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class GuardianTest {
 
     @Test
-    @DisplayName("Given a valid name and rank, When intantiating, Then the Guardian is created")
+    @DisplayName("Given a valid name and rank, When instantiating, Then the Guardian is created")
     void shouldCreateValidGuardian() {
         UUID id = UUID.randomUUID();
         Guardian guardian = new Guardian(id, "Geralt", GuardianRank.MASTER);
@@ -30,7 +30,7 @@ class GuardianTest {
     }
 
     @Test
-    @DisplayName("Given an blank name, When instantiating, Then throw IllegalArgumentException")
+    @DisplayName("Given a blank name, When instantiating, Then throw IllegalArgumentException")
     void shouldRejectBlankName() {
         assertThatThrownBy(() -> new Guardian(UUID.randomUUID()," ", GuardianRank.NOVICE))
                 .isInstanceOf(IllegalArgumentException.class)

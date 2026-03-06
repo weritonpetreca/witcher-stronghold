@@ -6,6 +6,7 @@
 ![Gradle](https://img.shields.io/badge/Gradle-9.3.1-02303A?style=for-the-badge&logo=gradle&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-24.0-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![CI](https://github.com/weritonpetreca/witcher-stronghold/actions/workflows/ci.yml/badge.svg?branch=develop)
 ![Coverage](https://img.shields.io/badge/Coverage-100%25-success?style=for-the-badge&logo=codecov&logoColor=white)
 
 ---
@@ -84,6 +85,17 @@ This project enforces rigorous quality gates. A build will **fail** if these sta
 *   **🛡️ ArchUnit:** Acts as a sentinel, preventing infrastructure/framework leakage into the core domain.
 *   **📊 JaCoCo:** Enforces **100% Instruction and Branch coverage** on all Domain entities.
 *   **💉 Constructor Injection:** `@Autowired` is strictly banned in favor of pure, testable constructor injection.
+
+---
+
+## ⚙️ The Forge (CI/CD)
+Every commit to the `develop` or `main` branch triggers an automated pipeline via **GitHub Actions**, ensuring the stronghold remains impregnable.
+
+| Stage | Description | Tool |
+| :--- | :--- | :--- |
+| **1. Build** | Compiles the project using Gradle Wrapper. | `gradlew build` |
+| **2. Test** | Executes all Unit and Architecture tests. | `gradlew test` |
+| **3. Verify** | Enforces code coverage thresholds and linting rules. | `gradlew check` |
 
 ---
 
